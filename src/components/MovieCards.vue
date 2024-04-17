@@ -1,10 +1,11 @@
 <script>
+import { store } from '../store.js';
     export default {
         name: 'MovieCards',
 
         data(){
             return{
-                
+                store
             }
         },
         methods: {
@@ -17,14 +18,19 @@
 </script>
 
 <template>
-    <div class="card" style="width: 18rem;">
+    <div v-for="singleMovie in store.resultMovies" class="card" style="width: calc(100% / 5 - 1rem)">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">{{ singleMovie.title }}</p>
+            <p class="card-text">{{ singleMovie.original_title }}</p>
+            <p class="card-text">{{ singleMovie.original_language }}</p>
+            <p class="card-text">{{ singleMovie.vote_average }}</p>
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
-
+    .card{
+        height: 100%;
+    }
 </style>
