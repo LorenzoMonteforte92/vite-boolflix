@@ -13,7 +13,8 @@ import TvCards from './TvCards.vue';
 
         data(){
             return{
-              store  
+              store
+                
             }
         },
         methods: {
@@ -27,7 +28,7 @@ import TvCards from './TvCards.vue';
 
 <template>
     <div class="container-fluid p-5">
-        <div class="text-white fs-2" >MOVIES</div>
+        <div class="text-white fs-2" >FILM</div>
         <div class="row gap-5">
             <div class="ms-movies-col col-12 d-flex flex-wrap overflow-x-auto gap-3">
                 <MovieCards></MovieCards>

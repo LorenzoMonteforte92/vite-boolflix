@@ -36,7 +36,7 @@ import { store } from '../store.js';
                 <div v-else-if="singleTvShow.original_language === 'pt'" class="language-flag m-0" ><img src="../assets/img/icons8-portugal.png" alt=""></div>
                 <div v-else-if="singleTvShow.original_language === 'ja'" class="language-flag m-0" ><img src="../assets/img/icons8-japan.png" alt=""></div>
                 <div v-else class="card-text">{{ singleTvShow.original_language }}</div>
-                <div class="card-text ps-1 pt-1">{{ singleTvShow.vote_average }}</div>
+                <div class="card-text ps-1 pt-1">{{ Math.round(singleTvShow.vote_average / 2) }}</div>
             </div>
         </div>
     </div>
