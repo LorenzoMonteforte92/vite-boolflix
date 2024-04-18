@@ -5,11 +5,14 @@ import { store } from '../store.js';
 
         data(){
             return{
-                store
+                store,
+                activeContact: 0
             }
         },
         methods: {
-            
+            overInfoAppear(index){
+                this.activeContact = index
+            }
             }
         }
 	
@@ -18,17 +21,18 @@ import { store } from '../store.js';
 </script>
 
 <template>
-    <div v-for="singleTvShow in store.resultTvShows"  class="card" style="width: calc(100% / 5 - 1rem)">
+    <div v-on:mouseover="overInfoAppear(index)" v-on:mouseleave="activeContact = ''" v-for="singleTvShow, index in store.resultTvShows" class="card position-relative" style="width: calc(100% / 3 - 1rem)">
         <div class="ms-card-img" >
             <img v-if="singleTvShow.backdrop_path != null" :src="`https://image.tmdb.org/t/p/w500${singleTvShow.backdrop_path}`" class="card-img-top" alt="...">
             <img v-else src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3A0wuWXMSjfCUPDgeVF63_08mB46ulS8Mtf-jxo3GBw&s" alt="">
         </div>
-        <div class="card-body d-flex flex-column justify-content-between mt-4">
-            <div>
+        <div v-if="activeContact === index" class="card-img-hover d-flex flex-column justify-content-between rounded p-1">
+            <div class="col-7 pb-2" >
                 <p class="card-text">{{ singleTvShow.name }}</p>
-                <p class="card-text">{{ singleTvShow.original_name }}</p>
+                <p class="card-text">{{ singleTvShow.original_name  }}</p>
             </div>
-            <div>
+            <div class="col overflow-y-auto">{{ singleTvShow.overview }}</div>
+            <div class="col-5" >
                 <div v-if="singleTvShow.original_language === 'it'" class="language-flag m-0" ><img src="../assets/img/icons8-italy.png" alt=""></div>
                 <div v-else-if="singleTvShow.original_language === 'fr'" class="language-flag m-0" ><img src="../assets/img/icons8-france.png" alt=""></div>
                 <div v-else-if="singleTvShow.original_language === 'es'" class="language-flag m-0" ><img src="../assets/img/icons8-spain.png" alt=""></div>
@@ -45,6 +49,7 @@ import { store } from '../store.js';
             </div>
         </div>
     </div>
+    
 </template>
 
 <style scoped lang="scss">
@@ -60,7 +65,7 @@ import { store } from '../store.js';
        border-radius: 50%;
 
        img{
-        width: 10%;
+        width: 12%;
        }
     }
 
@@ -68,7 +73,40 @@ import { store } from '../store.js';
         height: 45%
     }
 
-    .fa-star{
+    .card-img-hover{
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: #00000092;
+    color: white;
+    transition: opacity 0.4s;
+}
+
+.fa-star{
         color: gold;
     }
+
+    ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #1b1b1b92; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333333c7; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #000000c7; 
+}
 </style>

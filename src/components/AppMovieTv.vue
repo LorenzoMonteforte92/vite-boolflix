@@ -14,7 +14,7 @@ import TvCards from './TvCards.vue';
         data(){
             return{
               store
-                
+
             }
         },
         methods: {
@@ -57,5 +57,26 @@ import TvCards from './TvCards.vue';
 .ms-series-col{
     height: 345px;
     width: 1423px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #1b1b1b92; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333333c7; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #000000c7; 
 }
 </style>
