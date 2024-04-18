@@ -36,7 +36,12 @@ import { store } from '../store.js';
                 <div v-else-if="singleMovie.original_language === 'pt'" class="language-flag m-0" ><img src="../assets/img/icons8-portugal.png" alt=""></div>
                 <div v-else-if="singleMovie.original_language === 'ja'" class="language-flag m-0" ><img src="../assets/img/icons8-japan.png" alt=""></div>
                 <div v-else class="card-text">{{ singleMovie.original_language }}</div>
-                <div class="card-text ps-1 pt-1">{{  Math.round(singleMovie.vote_average / 2)  }}</div>
+                <div v-if="Math.round(singleMovie.vote_average / 2) == 1" class="card-text ps-1 pt-1"><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+                <div v-else-if="Math.round(singleMovie.vote_average / 2) == 2" class="card-text ps-1 pt-1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+                <div v-else-if="Math.round(singleMovie.vote_average / 2) == 3" class="card-text ps-1 pt-1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+                <div v-else-if="Math.round(singleMovie.vote_average / 2) == 4" class="card-text ps-1 pt-1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                <div v-else-if="Math.round(singleMovie.vote_average / 2) == 5" class="card-text ps-1 pt-1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div v-else class="card-text ps-1 pt-1"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
             </div>
         </div>
     </div>
@@ -61,5 +66,9 @@ import { store } from '../store.js';
 
     .ms-card-img{
         height: 45%
+    }
+
+    .fa-star{
+        color: gold;
     }
 </style>

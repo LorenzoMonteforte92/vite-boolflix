@@ -5,8 +5,3 @@ export const store = reactive({
     resultMovies: [],
     resultTvShows: [],
 });
-
-
-//dividere il numero per 2
-//renderlo un integer unico arrotondato per eccesso
-//associare ogni numero a 
