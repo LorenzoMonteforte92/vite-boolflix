@@ -6,7 +6,7 @@ import { store } from '../store.js';
         data(){
             return{
                 store,
-                activeContact: 0
+                activeContact: ''
             }
         },
         methods: {
@@ -24,9 +24,9 @@ import { store } from '../store.js';
     <div v-on:mouseover="overInfoAppear(index)" v-on:mouseleave="activeContact = ''" v-for="singleTvShow, index in store.resultTvShows" class="card position-relative" style="width: calc(100% / 3 - 1rem)">
         <div class="ms-card-img" >
             <img v-if="singleTvShow.backdrop_path != null" :src="`https://image.tmdb.org/t/p/w500${singleTvShow.backdrop_path}`" class="card-img-top" alt="...">
-            <img v-else src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3A0wuWXMSjfCUPDgeVF63_08mB46ulS8Mtf-jxo3GBw&s" alt="">
+            <img v-else  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3A0wuWXMSjfCUPDgeVF63_08mB46ulS8Mtf-jxo3GBw&s" class="card-img-top" alt="">
         </div>
-        <div v-if="activeContact === index" class="card-img-hover d-flex flex-column justify-content-between rounded p-1">
+        <div v-if="activeContact === index" class="card-body card-img-hover d-flex flex-column justify-content-between rounded p-1">
             <div class="col-7 pb-2" >
                 <p class="card-text">{{ singleTvShow.name }}</p>
                 <p class="card-text">{{ singleTvShow.original_name  }}</p>
@@ -54,6 +54,7 @@ import { store } from '../store.js';
 
 <style scoped lang="scss">
     .card{
+        height: 73%;
 
         img{
             width: 100%;
@@ -69,9 +70,14 @@ import { store } from '../store.js';
        }
     }
 
-    .ms-card-img{
-        height: 45%
+    .card-img-top{
+        height: 100%;
     }
+
+    .ms-card-img{
+        height: 100%;
+    }
+    
 
     .card-img-hover{
     position: absolute;

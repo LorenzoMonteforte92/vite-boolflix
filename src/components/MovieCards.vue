@@ -6,7 +6,7 @@ import { store } from '../store.js';
         data(){
             return{
                 store,
-                activeContact: 0
+                activeContact: ''
                 
             }
         },
@@ -25,7 +25,7 @@ import { store } from '../store.js';
     <div v-on:mouseover="overInfoAppear(index)" v-on:mouseleave="activeContact = ''" v-for="singleMovie, index in store.resultMovies" class="card position-relative" style="width: calc(100% / 3 - 1rem)">
         <div class="ms-card-img" >
             <img v-if="singleMovie.backdrop_path != null" :src="`https://image.tmdb.org/t/p/w500${singleMovie.backdrop_path}`" class="card-img-top" alt="...">
-            <img v-else src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3A0wuWXMSjfCUPDgeVF63_08mB46ulS8Mtf-jxo3GBw&s" alt="">
+            <img v-else src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3A0wuWXMSjfCUPDgeVF63_08mB46ulS8Mtf-jxo3GBw&s" class="card-img-top" alt="">
         </div>
         <div v-if="activeContact === index" class="card-img-hover d-flex flex-column justify-content-between rounded p-1">
             <div class="col-7 pb-2" >
@@ -70,10 +70,6 @@ import { store } from '../store.js';
        }
     }
 
-    .ms-card-img{
-        height: 45%
-    }
-
     .card-img-hover{
     position: absolute;
     top: 0%;
@@ -85,6 +81,16 @@ import { store } from '../store.js';
     color: white;
     transition: opacity 0.4s;
 }
+
+
+.card-img-top{
+        height: 100%;
+    }
+
+    .ms-card-img{
+        height: 100%;
+    }
+    
 
 .fa-star{
         color: gold;

@@ -22,7 +22,7 @@ import { store } from '../store';
 <div class="container-fluid">
     <div class="row justify-content-between py-3 text-white">
         <div class="col-3 text-center">
-            <div class="text-danger fs-2" >BOOLFLIX</div>
+            <div class="text-danger fs-2" ><a class="bool-logo text-danger fs-2" href="http://localhost:5173/">BOOLFLIX</a></div>
         </div>
         <div class="col-3 d-flex align-items-center">
             <button @click="$emit('searchMovieTv')" class="ms-btn fs-5 ms-2" ><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -46,4 +46,8 @@ import { store } from '../store';
 
     }
 
+.bool-logo{
+    cursor: pointer;
+    text-decoration: none;
+}
 </style>
