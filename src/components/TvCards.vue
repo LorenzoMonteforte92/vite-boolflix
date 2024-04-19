@@ -6,15 +6,29 @@ import { store } from '../store.js';
         data(){
             return{
                 store,
-                activeContact: ''
+                activeContact: '',
+                supportedLanguages: [
+                    'it',
+                    'en',
+                    'fr',
+                    'es',
+                    'pt',
+                    'ja'
+                ]
             }
         },
         methods: {
             overInfoAppear(index){
                 this.activeContact = index
-            }
+            },
+            
+            getFlagUrl(index){
+                let flagName = store.resultMovies[index].original_language + '.png';
+                return new URL(`../assets/img/${flagName}`, import.meta.url).href;
+                
             }
         }
+    }
 	
 
     
@@ -33,12 +47,10 @@ import { store } from '../store.js';
             </div>
             <div class="col overflow-y-auto">{{ singleTvShow.overview }}</div>
             <div class="col-5" >
-                <div v-if="singleTvShow.original_language === 'it'" class="language-flag m-0" ><img src="../assets/img/icons8-italy.png" alt=""></div>
-                <div v-else-if="singleTvShow.original_language === 'fr'" class="language-flag m-0" ><img src="../assets/img/icons8-france.png" alt=""></div>
-                <div v-else-if="singleTvShow.original_language === 'es'" class="language-flag m-0" ><img src="../assets/img/icons8-spain.png" alt=""></div>
-                <div v-else-if="singleTvShow.original_language === 'en'" class="language-flag m-0" ><img src="../assets/img/icons8-great-britain.png" alt=""></div>
-                <div v-else-if="singleTvShow.original_language === 'pt'" class="language-flag m-0" ><img src="../assets/img/icons8-portugal.png" alt=""></div>
-                <div v-else-if="singleTvShow.original_language === 'ja'" class="language-flag m-0" ><img src="../assets/img/icons8-japan.png" alt=""></div>
+            <!-- bandiere -->
+                <div v-if="supportedLanguages.includes(singleTvShow.original_language)" class="language-flag m-0" ><img :src="getFlagUrl(index)" alt=""></div>
+                <div v-else class="card-text">{{ singleTvShow.original_language }}</div>
+            <!-- /bandiere -->
                 <div v-else class="card-text">{{ singleTvShow.original_language }}</div>
                 <div v-if="Math.round(singleTvShow.vote_average / 2) == 1" class="card-text ps-1 pt-1"><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
                 <div v-else-if="Math.round(singleTvShow.vote_average / 2) == 2" class="card-text ps-1 pt-1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
